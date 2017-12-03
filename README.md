@@ -5,7 +5,7 @@ Creating a basic JSON API server in Go for a side-project
 # Routes available
 
 | Route | HTTP Method | Description |
-|:-----:|:-----------:|:----------:|
+|:------|:------------|:------------|
 | /accounts | GET | gets all user accounts |
 | /accounts/{id} | GET | gets specific user account |
 | /accounts | POST | create new account. Expects json object with string name, int age, and string email properties | 
