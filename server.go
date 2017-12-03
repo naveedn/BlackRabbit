@@ -10,9 +10,9 @@ import (
 )
 
 type Account struct {
-	Name  string
-	Age   int8
-	Email string
+	Name  string `json:"name"`
+	Age   int8   `json:"age"`
+	Email string `json:"email"`
 }
 
 type Accounts []Account
