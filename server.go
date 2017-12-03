@@ -17,13 +17,19 @@ type Account struct {
 
 type Accounts []Account
 
-func handler(w http.ResponseWriter, r *http.Request) {
+func AccountIndex(w http.ResponseWriter, r *http.Request) {
 	accounts := Accounts{
 		Account{Name: "Robbie Wagner", Age: 26, Email: "robbie.wagner@gmail.com"},
 		Account{Name: "Naveed Nadjmabadi", Age: 25, Email: "naveed.nadjmabadi@gmail.com"},
 	}
 
 	json.NewEncoder(w).Encode(accounts)
+}
+
+func AccountId(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	accountId := vars["accountID"]
+	fmt.Fprintln(w, "Account Show:", accountId)
 }
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -33,6 +39,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 func main() {
 	router := mux.NewRouter().StrictSlash(true)
 	router.HandleFunc("/", Index)
-	router.HandleFunc("/Accounts", handler)
+	router.HandleFunc("/Accounts", AccountIndex)
+	router.HandleFunc("/Accounts/{accountID}", AccountId)
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
