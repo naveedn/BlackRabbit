@@ -21,13 +21,19 @@ var routes = Routes{
 	Route{
 		"AccountIndex",
 		"GET",
-		"/Accounts",
+		"/accounts",
 		AccountIndex,
 	},
 	Route{
 		"AccountId",
 		"GET",
-		"/Accounts/{AccountId}",
+		"/accounts/{accountId}",
 		AccountId,
+	},
+	Route{
+		"AccountCreate",
+		"POST",
+		"/accounts",
+		AccountCreate,
 	},
 }
