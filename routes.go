@@ -1,10 +1,6 @@
 package main
 
-import (
-	"net/http"
-
-	"github.com/gorilla/mux"
-)
+import "net/http"
 
 type Route struct {
 	Name        string

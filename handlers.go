@@ -2,16 +2,15 @@ package main
 
 import (
 	"encoding/json"
-	"net/http"
 	"fmt"
+	"net/http"
+
 	"github.com/gorilla/mux"
 )
 
 func AccountIndex(w http.ResponseWriter, r *http.Request) {
-	accounts := Accounts{
-		Account{Name: "Robbie Wagner", Age: 26, Email: "robbie.wagner@gmail.com"},
-		Account{Name: "Naveed Nadjmabadi", Age: 25, Email: "naveed.nadjmabadi@gmail.com"},
-	}
+	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
+	w.WriteHeader(http.StatusOK)
 
 	if err := json.NewEncoder(w).Encode(accounts); err != nil {
 		panic(err)
